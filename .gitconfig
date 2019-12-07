@@ -1,0 +1,12 @@
+[user]
+	email = stefan.ilie@hostmaker.co
+	name = Stefan Ilie
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+  excludesfile = /Users/stefanilie/.gitignore.global
+[gpg]
+  program = gpg
