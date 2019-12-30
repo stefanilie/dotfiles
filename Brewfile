@@ -3,6 +3,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "phrase/brewed"
 tap "wtfutil/wtfutil"
+tap "adoptopenjdk/openjdk"
 
 # utility/essential
 brew "ffmpeg"
@@ -23,6 +24,7 @@ brew "wtfutil"
 brew "zsh"
 
 # development dependencies
+cask "adoptopenjdk8"
 brew "nvm"
 brew "postgresql", restart_service: true
 brew "yarn"
@@ -53,13 +55,13 @@ cask "1password"
 cask "aerial"
 cask "android-sdk"
 cask "android-ndk"
+cask "android-studio"
 cask "alfred"
 cask "atom"
-casl "brave-browser"
+cask "brave-browser"
 cask "cathode"
 cask "diskwave"
 cask "gimp"
-cask "homebrew/cask-fonts/font-fira-code"
 cask "iterm2"
 cask "minecraft"
 cask "mixxx"
@@ -84,5 +86,3 @@ mas "com.apple.iWork.Keynote", id: 409183694
 mas "com.apple.iWork.Numbers", id: 409203825
 mas "com.apple.iWork.Pages", id: 409201541
 mas "com.apple.dt.Xcode", id: 497799835
-mas "com.giorgiocalderolla.Wipr-Mac", id: 1320666476
-mas "com.wireguard.macos", id: 1451685025

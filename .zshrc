@@ -108,10 +108,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 alias venvactivate="source venv/bin/activate"
 alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin
-eval "$(pyenv init -)""
-# alias my_aws='~/.pyenv/versions/3.7.2/bin/aws'
 export PATH="$HOME/.fastlane/bin:$PATH"
 alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_rsa_worrk'
 alias switch_git_personal='ssh-add -D && ssh-add ~/.ssh/id_rsa_personal'
