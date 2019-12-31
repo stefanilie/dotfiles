@@ -44,10 +44,10 @@ echo "\n Trackpad."
 echo "\n Dock."
 
 echo "- Turn on dock autohiding."
-defaults write com.apple.Dock autohide -boolean true
+defaults write com.apple.dock autohide -boolean true
 
 echo "- Resize dock tiles."
-defaults write com.apple.Dock tilesize -integer 48
+defaults write com.apple.dock tilesize -integer 48
 
 echo "- Wipe all (default) app icons from the Dock."
 defaults write com.apple.dock persistent-apps -array ""

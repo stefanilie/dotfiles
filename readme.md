@@ -1,6 +1,10 @@
+<div align="center">
+  <img src="screenshot.png" alt="Screenshot" width="650" />
+</div>
+
 # dotfiles.
 
-Actually, mostly just shell scripts. macOS focused.
+Actually, mostly just shell scripts. react-native focused.
 
 ### Installation
 
@@ -14,6 +18,7 @@ Requires Xcode to work.
 - Installs `brew` if not present, as well as some CLI apps, GUI apps, Mac App Store apps
 - Configures `vscode`
 - Configures a global `.gitconfig` and `gpg` with my own git email and pgp key
+- Configures Android Studio.
 
 ### Credits
 
