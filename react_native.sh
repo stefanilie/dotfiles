@@ -22,5 +22,8 @@ echo "\n- Installing Ruby 2.4.6 "
 echo "\n- Updating bundler"
 gem update bundler
 
+echo "\n- fixing glog issue"
+sudo xcode-select --switch /Applications/Xcode.app
+
 # echo " - Creating a new AndroidVirtualDevice"
 # echo no | Android/Sdk/tools/bin/avdmanager create avd --force --name NewAVDevice --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86'
