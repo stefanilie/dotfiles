@@ -8,7 +8,7 @@ echo "\n Hey there. Never mind me, just setting up your system.\n"
 
 ./zsh.sh
 
-./android.sh
+./react_native.sh
 
 ./code.sh
 
