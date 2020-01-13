@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="screenshot.png" alt="Screenshot" width="650" />
+  <img src="assets/screenshot.png" alt="Screenshot" width="650" />
 </div>
 
 # dotfiles.
@@ -17,8 +17,7 @@ Requires Xcode to work.
 - Initialises macOS (and some apps) with opinionated defaults
 - Installs `brew` if not present, as well as some CLI apps, GUI apps, Mac App Store apps
 - Configures `vscode`
-- Configures a global `.gitconfig` and `gpg` with my own git email and pgp key
-- Configures Android Studio.
+- Dependencies for react-native development.
 
 ### Credits
 

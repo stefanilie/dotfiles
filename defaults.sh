@@ -133,7 +133,7 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
 echo "- Seting desktop background."
 mkdir /Users/stefanilie/Pictures/wall
-cp edvard_munch_the_vampire.jpg ~/Users/stefanilie/Pictures/wall
+cp assets/edvard_munch_the_vampire.jpg ~/Users/stefanilie/Pictures/wall
 defaults write com.apple.desktop Background '{default = {ImageFilePath = "/Users/stefanilie/Pictures/wall/edvard_munch_the_vampire.jpg";};}'
 
 echo "\n All done."
