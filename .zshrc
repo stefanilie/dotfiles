@@ -111,4 +111,4 @@ alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
 export PATH="$HOME/.fastlane/bin:$PATH"
 alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_rsa_worrk'
 alias switch_git_personal='ssh-add -D && ssh-add ~/.ssh/id_rsa_personal'
-alias youtubedl='youtube-dl -x --audio-format mp3'
+alias youtubedl='youtube-dl -x --audio-format mp3 --embed-thumbnail'
