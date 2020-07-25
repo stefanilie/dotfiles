@@ -1,0 +1,4 @@
+Name    Version   Rev   Tracking       Publisher     Notes
+codium  1.47.2    54    latest/stable  snapcrafters  classic
+core18  20200707  1880  latest/stable  canonical*    base
+snapd   2.45.2    8542  latest/stable  canonical*    snapd
