@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/pop_os!.png" alt="Screenshot" width="650" />
+  <img src="pop_os!.png" alt="Screenshot" width="650" />
 </div>
 
 # dotfiles.
