@@ -107,3 +107,7 @@ alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
 alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_work_rsa'
 alias switch_git_personal='ssh-add -D && ssh-add ~/.ssh/id_personal_rsa'
 alias youtubedl='youtube-dl -x --audio-format mp3 --embed-thumbnail'
+
+export PATH="/home/stefanilie/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

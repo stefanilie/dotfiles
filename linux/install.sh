@@ -4,6 +4,8 @@ echo "\n- Hey there. Never mind me, just setting up your system.\n"
 
 ./npm.sh
 
+./pyenv.sh
+
 ./zsh.sh
 
 figlet "And we're done" | lolcat -a -s 50 
