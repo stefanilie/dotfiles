@@ -33,6 +33,7 @@ brew "ant"
 brew "maven"
 brew "gradle"
 brew "nginx"
+brew "watchman"
 
 # games and fun stuff
 brew "archey"
