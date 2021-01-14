@@ -34,5 +34,7 @@ code --install-extension wayou.vscode-todo-highlight
 code --install-extension wmaurer.change-case
 code --install-extension yzane.markdown-pdf
 code --install-extension yzhang.markdown-all-in-one
+code --install-extension wix.vscode-import-cost
+code --install-extension artdiniz.quitcontrol-vscode
 
 echo " Done installing code packages.\n"
