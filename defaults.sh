@@ -71,9 +71,9 @@ echo "- Set default display mode to list."
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 echo "- Set favourite folders."
-/usr/bin/sfltool add-item com.apple.LSSharedFileList.FavoriteItems ~/Users/stefanilie/Downloads/
-/usr/bin/sfltool add-item com.apple.LSSharedFileList.FavoriteItems ~/Users/stefanilie/Documents/
-/usr/bin/sfltool add-item com.apple.LSSharedFileList.FavoriteItems ~/Users/stefanilie/Desktop/
+/usr/bin/sfltool add-item com.apple.LSSharedFileList.FavoriteItems ~/Users/$(whoami)/Downloads/
+/usr/bin/sfltool add-item com.apple.LSSharedFileList.FavoriteItems ~/Users/$(whoami)/Documents/
+/usr/bin/sfltool add-item com.apple.LSSharedFileList.FavoriteItems ~/Users/$(whoami)/Desktop/
 
 echo "- Avoid creating .DS_Store files on network volumes."
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -132,8 +132,8 @@ defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.n
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
 echo "- Seting desktop background."
-mkdir /Users/stefanilie/Pictures/wall
-cp assets/edvard_munch_the_vampire.jpg ~/Users/stefanilie/Pictures/wall
-defaults write com.apple.desktop Background '{default = {ImageFilePath = "/Users/stefanilie/Pictures/wall/edvard_munch_the_vampire.jpg";};}'
+mkdir /Users/$(whoami)/Pictures/wall
+cp assets/edvard_munch_the_vampire.jpg ~/Users/$(whoami)/Pictures/wall
+defaults write com.apple.desktop Background '{default = {ImageFilePath = "/Users/$(whoami)/Pictures/wall/edvard_munch_the_vampire.jpg";};}'
 
 echo "\n All done."

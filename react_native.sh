@@ -1,8 +1,8 @@
 echo "\n- Installing RVM"
 \curl -sSL https://get.rvm.io | bash -s stable
 
-echo "\n- Installing Ruby 2.4.6 "
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  && rvm install 2.4.6 && rvm install 2.7.0 
+echo "\n- Installing Ruby 2.7.0 "
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  && rvm install 2.7.0 
 
 echo "\n- Using Ruby 2.7.0 "
 rvm use 2.7.0
