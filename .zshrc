@@ -111,4 +111,17 @@ alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
 export PATH="$HOME/.fastlane/bin:$PATH"
 alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_rsa_worrk'
 alias switch_git_personal='ssh-add -D && ssh-add ~/.ssh/id_rsa_personal'
-alias youtubedl='youtube-dl -x --audio-format mp3 --embed-thumbnail'
+alias switch_git_vlad='ssh-add -D && ssh-add ~/.ssh/id_vlad_rsa'
+alias ydl='youtube-dl -x --audio-format mp3 --embed-thumbnail '
+alias important_videos='cd /Users/stefanilie/Downloads/ImportantVideos && youtube-dl https://www.youtube.com/watch\?v\=QZShA_a-5r8\&list\=PLbXM76fJalFq2XR8cGlWSV3fxWkwYPHQ4\&index\=1 --download-archive archive.txt'
+alias download_mix='cd /Users/stefanilie/Downloads/mix && youtube-dl https://www.youtube.com/watch\?v\=B9lr_zrJH7A\&list\=PLbXM76fJalFpn85onaelHZbvTE8lrMd0H\&index\=1\& --download-archive archive.txt'
+alias music_download='cd /Users/stefanilie/Desktop/2021 && ydl https://www.youtube.com/playlist\?list\=PLbXM76fJalFouUno_RSeNXbL1FJwCLttI -i --download-archive archive.txt'
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/sbin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
