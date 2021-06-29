@@ -1037,7 +1037,7 @@ org.gnome.gnome-screenshot include-pointer false
 org.gnome.gnome-screenshot take-window-shot false
 org.gnome.gnome-screenshot delay 0
 org.gnome.gnome-screenshot border-effect 'none'
-org.gnome.gnome-screenshot last-save-directory 'file:///home/stefanilie/Pictures'
+org.gnome.gnome-screenshot last-save-directory 'file:///home/$(whoami)/Pictures'
 org.gnome.gnome-screenshot default-file-type 'png'
 org.gnome.gnome-screenshot auto-save-directory ''
 org.gnome.gnome-screenshot include-icc-profile true
@@ -1055,7 +1055,7 @@ org.gnome.gedit.plugins.filebrowser filter-mode ['hide-hidden', 'hide-binary']
 org.gnome.gedit.plugins.filebrowser filter-pattern ''
 org.gnome.gedit.plugins.filebrowser enable-remote false
 org.gnome.gedit.plugins.filebrowser root 'file:///'
-org.gnome.gedit.plugins.filebrowser virtual-root 'file:///home/stefanilie/Projects/lantum-native/node_modules/caniuse-lite/data/regions'
+org.gnome.gedit.plugins.filebrowser virtual-root 'file:///home/$(whoami)/Projects/lantum-native/node_modules/caniuse-lite/data/regions'
 org.gnome.gedit.plugins.filebrowser binary-patterns ['*.la', '*.lo']
 org.gnome.gedit.plugins.filebrowser open-at-first-doc true
 org.gnome.gedit.plugins.pythonconsole use-system-font true

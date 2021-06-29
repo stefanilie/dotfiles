@@ -100,6 +100,9 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# OpenVPN path -> change this os other start failing
+export PATH=$(brew --prefix openvpn)/sbin:$PATH
+
 #*******Add this below like JAVA_HOME for mine*******
 export ANDROID_HOME=/Users/stefanilie/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -109,7 +112,7 @@ alias venvactivate="source venv/bin/activate"
 alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
 
 export PATH="$HOME/.fastlane/bin:$PATH"
-alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_rsa_worrk'
+alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_rsa_work'
 alias switch_git_personal='ssh-add -D && ssh-add ~/.ssh/id_rsa_personal'
 alias switch_git_vlad='ssh-add -D && ssh-add ~/.ssh/id_vlad_rsa'
 alias ydl='youtube-dl -x --audio-format mp3 --embed-thumbnail '
