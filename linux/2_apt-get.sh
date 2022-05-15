@@ -32,7 +32,7 @@ echo ¨\n- Installing games
 sudo apt-get install lutris steam
 
 echo "\n- Installing utils"
-sudo apt-get install 1password albert audacity deluge discord ffmpeg gimp mixxx spotify-client telegram tilix transmission vlc 
+sudo apt-get install 1password albert audacity deluge discord ffmpeg gimp mixxx okular spotify-client telegram tilix transmission vlc 
 
 
 echo "\n- Installing nordvpn"
