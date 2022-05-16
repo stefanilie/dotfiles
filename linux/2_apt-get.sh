@@ -15,6 +15,10 @@ echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbunt
 sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_21.10/Release.key -O "/etc/apt/trusted.gpg.d/home:manuelschneid3r.asc"
 sudo apt-get update
 
+echo "\n- Adding howdy https://github.com/boltgolt/howdysudo add-apt-repository ppa:boltgolt/howdy apt-repo"
+sudo add-apt-repository ppa:boltgolt/howdy
+sudo apt update
+
 echo ¨\n- Installing vscode¨
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -32,8 +36,7 @@ echo ¨\n- Installing games
 sudo apt-get install lutris steam
 
 echo "\n- Installing utils"
-sudo apt-get install 1password albert audacity deluge discord ffmpeg gimp mixxx okular spotify-client telegram tilix transmission vlc 
-
+sudo apt-get install 1password albert audacity deluge discord ffmpeg gimp howdy mixxx okular spotify-client telegram tilix transmission vlc 
 
 echo "\n- Installing nordvpn"
 sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)

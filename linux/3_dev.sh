@@ -15,3 +15,10 @@ npm install -g jest
 
 echo "\n- Installing AndroidStudio deps."
 sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+
+echo "\n- Installing rust dev environment."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+
+echo "\n- Installing broot."
+cargo install broot
