@@ -36,7 +36,7 @@ echo ¨\n- Installing games
 sudo apt-get install lutris steam
 
 echo "\n- Installing utils"
-sudo apt-get install 1password albert audacity deluge discord ffmpeg gimp howdy mixxx okular spotify-client taskwarrior telegram tilix transmission vlc 
+sudo apt-get install 1password albert audacity calibre deluge discord ffmpeg gimp howdy mixxx okular spotify-client taskwarrior telegram tilix transmission vlc 
 
 echo "\n- Installing nordvpn"
 sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
