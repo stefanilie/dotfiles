@@ -44,3 +44,5 @@ sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
 echo "\n- Installing fun stuff"
 sudo apt-get install cowsay figlet neofetch lolcat toilet
 
+echo "\n- Installing go"
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
