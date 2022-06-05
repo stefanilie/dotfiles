@@ -32,6 +32,9 @@ echo ¨\n- Installing yt-dlp¨
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
 
+echo "\n- Installing go"
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
+
 echo ¨\n- Installing games
 sudo apt-get install lutris steam
 
@@ -44,5 +47,5 @@ sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
 echo "\n- Installing fun stuff"
 sudo apt-get install cowsay figlet neofetch lolcat toilet
 
-echo "\n- Installing go"
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
+echo "\n- Installing cheat"
+go install github.com/cheat/cheat/cmd/cheat@latest

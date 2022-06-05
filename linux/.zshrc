@@ -111,3 +111,5 @@ alias youtube-dl=`yt-dlp`
 
 # GO path
 export PATH=$PATH:/usr/local/go/bin
+# cheat path
+export PATH="/home/stefanilie/go/bin":$PATH
