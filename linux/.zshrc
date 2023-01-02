@@ -113,3 +113,7 @@ alias youtube-dl=`yt-dlp`
 export PATH=$PATH:/usr/local/go/bin
 # cheat path
 export PATH="/home/stefanilie/go/bin":$PATH
+
+# flyctl config
+export FLYCTL_INSTALL="/home/stefanilie/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
