@@ -29,6 +29,7 @@ brew "zsh"
 
 # development dependencies
 cask "adoptopenjdk8"
+cask "adoptopenjdk11"
 brew "nvm"
 brew "postgresql", restart_service: true
 brew "yarn"
