@@ -53,6 +53,14 @@ sudo apt-get install cowsay figlet neofetch lolcat toilet
 echo "\n- Install nvm"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
+echo "\n- Install nvim"
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+sudo apt install ./nvim-linux64.deb
+rm -rf nvim-linux64.deb
+
+echo "\n- Cloning asgtro-vim"
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+
 echo "\n- Install pix"
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
