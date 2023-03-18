@@ -1,9 +1,11 @@
 echo "\n- Hey there. Never mind me, just setting up your system.\n"
 
-./defaults.sh
+sudo ./1_zsh.sh
 
-./npm.sh
+sudo ./2_apt-get.sh
 
-./zsh.sh
+# ./defaults.sh
+
+# ./npm.sh
 
 figlet "And we're done" | lolcat -a -s 50 

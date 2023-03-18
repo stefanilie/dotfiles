@@ -106,4 +106,14 @@ alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
 
 alias switch_git_work='ssh-add -D && ssh-add ~/.ssh/id_work_rsa'
 alias switch_git_personal='ssh-add -D && ssh-add ~/.ssh/id_personal_rsa'
-alias youtubedl='youtube-dl -x --audio-format mp3 --embed-thumbnail'
+alias youtubedl='yt-dlp -x --audio-format mp3 --embed-thumbnail'
+alias youtube-dl=`yt-dlp`
+
+# GO path
+export PATH=$PATH:/usr/local/go/bin
+# cheat path
+export PATH="/home/stefanilie/go/bin":$PATH
+
+# flyctl config
+export FLYCTL_INSTALL="/home/stefanilie/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
