@@ -9,6 +9,7 @@ repo = 'popcorn-official/popcorn-desktop'
 tap repo, "https://github.com/#{repo}.git"
 
 # utility/essential
+cask "applite"
 brew "ffmpeg"
 brew "fzf"
 brew "gifsicle"
