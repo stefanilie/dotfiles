@@ -52,19 +52,19 @@ cd ..
 echo "==============================Downloading playlist - Catalina=============================="
 cd catalina
 sudo yt-dlp https://www.youtube.com/playlist?list=PL1hz3SZOPfISybnwCfFqCy4nRUtN62Xgf --download-archive archive.txt -x --audio-format mp3 --embed-thumbnail --audio-quality 0
-cd
+cd ..
 
 echo "==============================Downloading playlist - Catalina2=============================="
 cd catalina2
 sudo yt-dlp https://www.youtube.com/playlist?list=PL1hz3SZOPfISgRBWVe74KP0OgqxGCY2m5 --download-archive archive.txt -x --audio-format mp3 --embed-thumbnail --audio-quality 0
-cd
+cd ..
 
 echo "==============================Downloading playlist - Vadim=============================="
 cd vadim
-sudo yt-dlp https://www.youtube.com/playlist?list=PLbXM76fJalFqvljZeeNqfkOSJtqU0BXxj -download-archive archive.txt -f mp4 --embed-thumbnail
-cd
+sudo yt-dlp https://www.youtube.com/playlist?list=PLbXM76fJalFqvljZeeNqfkOSJtqU0BXxj --download-archive archive.txt -f mp4 --embed-thumbnail
+cd ..
 
 echo "==============================Downloading playlist -  QuintesentiallyRomanianMemes=============================="
-cd vadim
-sudo yt-dlp https://www.youtube.com/playlist?list=PLbXM76fJalFqO9FJ1TVdiZJLyMVqefyuD -download-archive archive.txt -f mp4 --embed-thumbnail
+cd QuintesentiallyRomanianMemes
+sudo yt-dlp https://www.youtube.com/playlist?list=PLbXM76fJalFqO9FJ1TVdiZJLyMVqefyuD --download-archive archive.txt -f mp4 --embed-thumbnail
 cd
