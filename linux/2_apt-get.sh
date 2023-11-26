@@ -61,7 +61,7 @@ rm -rf nvim-linux64.deb
 echo "\n- Cloning asgtro-vim"
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 
-echo "\n- Install pix"
+echo "\n- Install pipx"
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 

@@ -1,5 +1,5 @@
 [user]
-	email = stefan.ilie@hostmaker.co
+	email = $EMAIL
 	name = Stefan Ilie
 [filter "lfs"]
 	clean = git-lfs clean -- %f
