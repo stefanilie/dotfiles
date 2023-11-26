@@ -1,11 +1,7 @@
-echo "\n- Installing RVM"
-\curl -sSL https://get.rvm.io | bash -s stable
-
-echo "\n- Installing Ruby 2.7.6 "
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  && rvm install 2.7.6 
-
-echo "\n- Using Ruby 2.7.6 "
-rvm use 2.7.6
+echo "\n- adding asdf plugins"
+asdf plugin add nodejs
+asdf plugin add ruby
+asdf install
 
 echo "\n- Updating bundler"
 gem update bundler
@@ -30,6 +26,3 @@ yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;28.0.3"
 
 echo "\n- Installing GPG keys"
 gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-
-# echo " - Creating a new AndroidVirtualDevice"
-# echo no | Android/Sdk/tools/bin/avdmanager create avd --force --name NewAVDevice --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86'
