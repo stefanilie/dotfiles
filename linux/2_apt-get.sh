@@ -32,6 +32,12 @@ echo "\n- Installing yt-dlp"
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
 
+echo "\n- Installing gping"
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ stable main" | sudo tee /etc/apt/sources.list.d/azlux.list
+sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+sudo apt update
+sudo apt install gping
+
 #echo "\n- Installing go"
 #sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
 
@@ -39,7 +45,7 @@ echo "\n- Installing games"
 sudo apt-get install lutris steam
 
 echo "\n- Installing utils"
-sudo apt-get install 1password albert audacity calibre deluge discord ffmpeg gimp mixxx okular taskwarrior telegram tilix transmission vlc
+sudo apt-get install 1password albert audacity calibre deluge discord duf ffmpeg gimp mixxx okular taskwarrior telegram tilix transmission vlc
 
 # echo "\n- Installing nordvpn"
 # sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
