@@ -32,7 +32,6 @@ code --install-extension msjsdiag.vscode-react-native
 code --install-extension naumovs.color-highlight
 code --install-extension redhat.vscode-yaml
 code --install-extension rvest.vs-code-prettier-eslint
-code --install-extension Shan.code-settings-sync
 code --install-extension stepanog.cage-icons
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension Tyriar.lorem-ipsum
