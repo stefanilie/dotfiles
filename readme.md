@@ -30,4 +30,4 @@ Requires Xcode to work.
 
 ### License
 
-MIT.
+MIT
