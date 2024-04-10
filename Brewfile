@@ -27,14 +27,13 @@ brew "yt-dlp"
 
 # development dependencies
 brew "asdf"
-cask "adoptopenjdk8"
-cask "adoptopenjdk11"
 brew "postgresql", restart_service: true
 brew "awscli"
 brew "ant"
 brew "maven"
 brew "gradle"
 brew "nginx"
+cask "temurin"
 brew "watchman"
 
 # games and fun stuff
