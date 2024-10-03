@@ -35,6 +35,7 @@ brew "gradle"
 brew "nginx"
 cask "temurin"
 brew "watchman"
+cask "zulu@17"
 
 # games and fun stuff
 brew "archey4"

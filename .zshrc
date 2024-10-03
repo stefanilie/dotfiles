@@ -107,6 +107,7 @@ export PATH=$(brew --prefix openvpn)/sbin:$PATH
 export ANDROID_HOME=/Users/stefanilie/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 #*******Add this below like JAVA_HOME for mine*******
 alias venvactivate="source venv/bin/activate"
 alias project_cleanup="rm -rf node_modules yarn.lock ios/Pods ios/Podfile.lock"
