@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #fileList {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Downloader</h1>
+    <div id="fileList"></div>
+    <div class="input-group">
+        <label for="currentNumber">Starting Number:</label>
+        <input type="number" id="currentNumber" value="280684">
+    </div>
+    <div class="input-group">
+        <label for="intervalCounter">Interval (seconds):</label>
+        <input type="number" id="intervalCounter" value="10" min="1">
+    </div>
+    <button id="startButton">Start Recording</button>
+    <button id="stopButton" disabled>Stop Recording</button>
+
+    <script>
+        const baseUrl = 'https://livesptfm.com/SPTFM/Audio128/media_w238313364_';
+        const fileExtension = '.aac';
+        let currentNumber = 280684;
+        let intervalMs = 10000; // 10 seconds
+
+        const headers = {
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip, deflate, br, zstd',
+            'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8,bho;q=0.7',
+            'Connection': 'keep-alive',
+            'DNT': '1',
+            'Host': 'livesptfm.com',
+            'Origin': 'https://myradioonline.ro',
+            'Referer': 'https://myradioonline.ro/',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Site': 'cross-site',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
+            'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"macOS"'
+        };
+
+        let interval;
+        const fileList = document.getElementById('fileList');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const currentNumberInput = document.getElementById('currentNumber');
+        const intervalCounter = document.getElementById('intervalCounter');
+
+        async function downloadFile(url) {
+            try {
+                const response = await fetch(url, { headers });
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const filename = `file_${currentNumber}${fileExtension}`;
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename;
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    console.log(`Downloaded: ${filename}`);
+                    return filename;
+                } else {
+                    console.log(`Failed to download: ${url} (Status: ${response.status})`);
+                    return null;
+                }
+            } catch (err) {
+                console.error(`Error downloading ${url}: ${err.message}`);
+                return null;
+            }
+        }
+
+        async function makeRequest() {
+            const url = `${baseUrl}${currentNumber}${fileExtension}`;
+            const filename = await downloadFile(url);
+            if (filename) {
+                const listItem = document.createElement('div');
+                listItem.textContent = filename;
+                fileList.appendChild(listItem);
+                fileList.scrollTop = fileList.scrollHeight;
+            }
+            currentNumber++;
+            currentNumberInput.value = currentNumber;
+        }
+
+        startButton.addEventListener('click', () => {
+            currentNumber = parseInt(currentNumberInput.value);
+            intervalMs = parseInt(intervalCounter.value) * 1000;
+            interval = setInterval(makeRequest, intervalMs);
+            startButton.disabled = true;
+            stopButton.disabled = false;
+            currentNumberInput.disabled = true;
+            intervalCounter.disabled = true;
+        });
+
+        stopButton.addEventListener('click', () => {
+            clearInterval(interval);
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            currentNumberInput.disabled = false;
+            intervalCounter.disabled = false;
+        });
+    </script>
+</body>
+</html>
