@@ -37,8 +37,8 @@
     <h1>Audio Downloader</h1>
     <div id="fileList"></div>
     <div class="input-group">
-        <label for="currentNumber">Starting Number:</label>
-        <input type="number" id="currentNumber" value="280684">
+        <label for="startingUrl">Starting URL:</label>
+        <input type="url" id="startingUrl" placeholder="https://livesptfm.com/SPTFM/Audio128/media_w963198793_282320.aac" style="width: 400px;">
     </div>
     <div class="input-group">
         <label for="intervalCounter">Interval (seconds):</label>
@@ -46,11 +46,15 @@
     </div>
     <button id="startButton">Start Recording</button>
     <button id="stopButton" disabled>Stop Recording</button>
+    <button id="mergeButton" style="display: none;">Merge Files</button>
+    <button id="selectFilesButton">Select & Merge Files</button>
+    <input type="file" id="fileInput" multiple accept=".aac" style="display: none;">
 
-    <script>
-        const baseUrl = 'https://livesptfm.com/SPTFM/Audio128/media_w238313364_';
+    <script> 
+        let baseUrl = '';
+        let basePrefix = '';
         const fileExtension = '.aac';
-        let currentNumber = 280684;
+        let currentNumber = 0;
         let intervalMs = 10000; // 10 seconds
 
         const headers = {
@@ -75,8 +79,13 @@
         const fileList = document.getElementById('fileList');
         const startButton = document.getElementById('startButton');
         const stopButton = document.getElementById('stopButton');
-        const currentNumberInput = document.getElementById('currentNumber');
+        const mergeButton = document.getElementById('mergeButton');
+        const selectFilesButton = document.getElementById('selectFilesButton');
+        const fileInput = document.getElementById('fileInput');
+        const startingUrlInput = document.getElementById('startingUrl');
         const intervalCounter = document.getElementById('intervalCounter');
+        
+        let downloadedFiles = []; // Store downloaded file blobs
 
         async function downloadFile(url) {
             try {
@@ -84,12 +93,14 @@
                 if (response.ok) {
                     const blob = await response.blob();
                     const filename = `file_${currentNumber}${fileExtension}`;
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = filename;
-                    link.click();
-                    URL.revokeObjectURL(link.href);
-                    console.log(`Downloaded: ${filename}`);
+                    
+                    // Store the blob for later merging (no individual download)
+                    downloadedFiles.push({
+                        filename: filename,
+                        blob: blob
+                    });
+                    
+                    console.log(`Fetched: ${filename} (${(blob.size / 1024).toFixed(2)} KB)`);
                     return filename;
                 } else {
                     console.log(`Failed to download: ${url} (Status: ${response.status})`);
@@ -101,35 +112,190 @@
             }
         }
 
+        function parseUrlAndExtractNumber(url) {
+            try {
+                // Extract the filename from the URL
+                const urlParts = url.split('/');
+                const filename = urlParts[urlParts.length - 1];
+                
+                // Remove the .aac extension
+                const nameWithoutExt = filename.replace('.aac', '');
+                
+                // Find the last underscore and extract the number after it
+                const lastUnderscoreIndex = nameWithoutExt.lastIndexOf('_');
+                if (lastUnderscoreIndex === -1) {
+                    throw new Error('No underscore found in filename');
+                }
+                
+                const numberPart = nameWithoutExt.substring(lastUnderscoreIndex + 1);
+                const number = parseInt(numberPart);
+                
+                if (isNaN(number)) {
+                    throw new Error('Invalid number in filename');
+                }
+                
+                // Extract the base URL and prefix
+                const baseUrlPart = url.substring(0, url.lastIndexOf('/') + 1);
+                const prefixPart = nameWithoutExt.substring(0, lastUnderscoreIndex + 1);
+                
+                return {
+                    baseUrl: baseUrlPart,
+                    prefix: prefixPart,
+                    startingNumber: number
+                };
+            } catch (error) {
+                throw new Error(`Failed to parse URL: ${error.message}`);
+            }
+        }
+
         async function makeRequest() {
-            const url = `${baseUrl}${currentNumber}${fileExtension}`;
+            const url = `${baseUrl}${basePrefix}${currentNumber}${fileExtension}`;
             const filename = await downloadFile(url);
             if (filename) {
                 const listItem = document.createElement('div');
-                listItem.textContent = filename;
+                listItem.textContent = `✓ ${filename}`;
                 fileList.appendChild(listItem);
                 fileList.scrollTop = fileList.scrollHeight;
             }
             currentNumber++;
-            currentNumberInput.value = currentNumber;
+        }
+
+        async function mergeFiles() {
+            if (downloadedFiles.length === 0) {
+                alert('No files to merge!');
+                return;
+            }
+
+            try {
+                // Create today's date string (YYYY-MM-DD format)
+                const today = new Date();
+                const dateString = today.getFullYear() + '-' + 
+                    String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                    String(today.getDate()).padStart(2, '0');
+                
+                // Concatenate all blobs
+                const mergedBlob = new Blob(downloadedFiles.map(file => file.blob), { type: 'audio/aac' });
+                
+                // Create download link for merged file
+                const filename = `${dateString}.aac`;
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(mergedBlob);
+                link.download = filename;
+                link.click();
+                URL.revokeObjectURL(link.href);
+                
+                console.log(`Merged ${downloadedFiles.length} files into: ${filename}`);
+                alert(`Successfully merged ${downloadedFiles.length} files into ${filename}`);
+                
+            } catch (err) {
+                console.error(`Error merging files: ${err.message}`);
+                alert('Error merging files. Check console for details.');
+            }
+        }
+
+        async function mergeSelectedFiles(files) {
+            if (files.length === 0) {
+                alert('No files selected!');
+                return;
+            }
+
+            try {
+                // Create today's date string (YYYY-MM-DD format)
+                const today = new Date();
+                const dateString = today.getFullYear() + '-' + 
+                    String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                    String(today.getDate()).padStart(2, '0');
+                
+                // Sort files by name to ensure consistent order
+                const sortedFiles = Array.from(files).sort((a, b) => a.name.localeCompare(b.name));
+                
+                // Concatenate all file blobs
+                const mergedBlob = new Blob(sortedFiles, { type: 'audio/aac' });
+                
+                // Create download link for merged file
+                const filename = `${dateString}-selected.aac`;
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(mergedBlob);
+                link.download = filename;
+                link.click();
+                URL.revokeObjectURL(link.href);
+                
+                console.log(`Merged ${sortedFiles.length} selected files into: ${filename}`);
+                alert(`Successfully merged ${sortedFiles.length} selected files into ${filename}`);
+                
+            } catch (err) {
+                console.error(`Error merging selected files: ${err.message}`);
+                alert('Error merging selected files. Check console for details.');
+            }
         }
 
         startButton.addEventListener('click', () => {
-            currentNumber = parseInt(currentNumberInput.value);
-            intervalMs = parseInt(intervalCounter.value) * 1000;
-            interval = setInterval(makeRequest, intervalMs);
-            startButton.disabled = true;
-            stopButton.disabled = false;
-            currentNumberInput.disabled = true;
-            intervalCounter.disabled = true;
+            const urlInput = startingUrlInput.value.trim();
+            
+            if (!urlInput) {
+                alert('Please enter a starting URL');
+                return;
+            }
+            
+            try {
+                const urlData = parseUrlAndExtractNumber(urlInput);
+                baseUrl = urlData.baseUrl;
+                basePrefix = urlData.prefix;
+                currentNumber = urlData.startingNumber;
+                
+                intervalMs = parseInt(intervalCounter.value) * 1000;
+                downloadedFiles = []; // Clear previous files
+                interval = setInterval(makeRequest, intervalMs);
+                startButton.disabled = true;
+                stopButton.disabled = false;
+                mergeButton.style.display = 'none';
+                startingUrlInput.disabled = true;
+                intervalCounter.disabled = true;
+                
+                console.log(`Starting from: ${baseUrl}${basePrefix}${currentNumber}${fileExtension}`);
+                
+            } catch (error) {
+                alert(`Error parsing URL: ${error.message}\n\nPlease use a URL like: https://livesptfm.com/SPTFM/Audio128/media_w963198793_282320.aac`);
+            }
         });
 
         stopButton.addEventListener('click', () => {
             clearInterval(interval);
             startButton.disabled = false;
             stopButton.disabled = true;
-            currentNumberInput.disabled = false;
+            mergeButton.style.display = downloadedFiles.length > 0 ? 'inline-block' : 'none';
+            startingUrlInput.disabled = false;
             intervalCounter.disabled = false;
+        });
+
+        mergeButton.addEventListener('click', mergeFiles);
+
+        selectFilesButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            const files = event.target.files;
+            if (files.length > 0) {
+                // Filter only .aac files (double check)
+                const aacFiles = Array.from(files).filter(file => 
+                    file.name.toLowerCase().endsWith('.aac')
+                );
+                
+                if (aacFiles.length === 0) {
+                    alert('No .aac files selected!');
+                    return;
+                }
+
+                if (aacFiles.length !== files.length) {
+                    alert(`Warning: Only ${aacFiles.length} out of ${files.length} selected files are .aac files. Only .aac files will be merged.`);
+                }
+
+                mergeSelectedFiles(aacFiles);
+            }
+            
+            // Reset the file input so the same files can be selected again if needed
+            event.target.value = '';
         });
     </script>
 </body>

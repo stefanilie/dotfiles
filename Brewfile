@@ -10,6 +10,7 @@ tap repo, "https://github.com/#{repo}.git"
 # utility/essential
 cask "applite"
 brew "btop"
+brew "cliclick"
 brew "duf"
 brew "dust"
 brew "ffmpeg"

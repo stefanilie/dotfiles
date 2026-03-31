@@ -133,3 +133,12 @@ fi
 . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 
 . "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
+
+alias gg_kill='yarn pm2 kill'
+alias gg_restart='yarn pm2 kill && yarn dev'
+alias azlogin='az login --use-device-code'
+alias aztoken='az account get-access-token'
+alias fix_wifi='ifconfig awdl0 down'
+alias stop_indexing='sudo mdutil -a -i off'
+alias start_indexing='sudo mdutil -a -i on'
+alias killport='f() { sudo lsof -t -i:$1 | xargs kill -9; unset -f f; }; f'
