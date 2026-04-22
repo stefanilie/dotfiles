@@ -142,3 +142,9 @@ alias fix_wifi='ifconfig awdl0 down'
 alias stop_indexing='sudo mdutil -a -i off'
 alias start_indexing='sudo mdutil -a -i on'
 alias killport='f() { sudo lsof -t -i:$1 | xargs kill -9; unset -f f; }; f'
+
+
+alias sptfm='/Users/gbStIoIl/Projects/personal/radio-recorder/record-sptfm'
+
+# Increase the maximum number of open file descriptors for boost pod
+ulimit -n 65536

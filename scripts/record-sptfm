@@ -1,0 +1,2 @@
+#!/bin/bash
+caffeinate -i ffmpeg -i "https://livesptfm.com:443/SPTFM/Live/playlist.m3u8" -vn -t "$1" "sptfm-$(date +%Y%m%d-%H%M%S).mp3"
